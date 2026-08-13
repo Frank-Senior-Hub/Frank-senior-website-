@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>FRANK SENIOR | Premium Clothing</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #050505;
+      color: #fff;
+    }
+
+    /* NAVIGATION */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 75px;
+      background: rgba(5, 5, 5, 0.94);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 7%;
+      z-index: 1000;
+      border-bottom: 1px solid #222;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      color: #fff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #999;
+    }
+
+    .cart {
+      font-size: 20px;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 20px 70px;
+      background:
+        linear-gradient(rgba(0,0,0,0.58), rgba(0,0,0,0.85)),
+        radial-gradient(circle at center, #252525 0%, #050505 65%);
+    }
+
+    .hero-content {
+      max-width: 900px;
+    }
+
+    .small-title {
+      font-size: 13px;
+      letter-spacing: 5px;
+      color: #aaa;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .hero h1 {
+      font-size: clamp(55px, 11vw, 130px);
+      line-height: 0.9;
+      letter-spacing: -4px;
+      font-weight: 900;
+      margin-bottom: 30px;
+    }
+
+    .hero p {
+      max-width: 550px;
+      margin: auto;
+      color: #bbb;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .hero-buttons {
+      margin-top: 35px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 16px 32px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      transition: 0.3s;
+    }
+
+    .btn-white {
+      background: #fff;
+      color: #000;
+    }
+
+    .btn-white:hover {
+      background: #ccc;
+      transform: translateY(-3px);
+    }
+
+    .btn-outline {
+      border: 1px solid #555;
+      color: #fff;
+    }
+
+    .btn-outline:hover {
+      border-color: #fff;
+      transform: translateY(-3px);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 100px 7%;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      margin-bottom: 45px;
+      gap: 20px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(32px, 5vw, 55px);
+      letter-spacing: -2px;
+    }
+
+    .section-heading p {
+      color: #888;
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+
+    /* CATEGORY CARDS */
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .category {
+      height: 500px;
+      position: relative;
+      overflow: hidden;
+      background: #151515;
+      display: flex;
+      align-items: end;
+      padding: 30px;
+    }
+
+    .category::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(transparent 30%, rgba(0,0,0,0.95));
+    }
+
+    .category-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .category h3 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .category a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    .category:hover {
+      transform: scale(0.99);
+    }
+
+    /* PRODUCTS */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .product {
+      background: #111;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .product:hover {
+      transform: translateY(-7px);
+    }
+
+    .product-image {
+      height: 370px;
+      background:
+        linear-gradient(135deg, #242424, #080808);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #555;
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    .product-info {
+      padding: 20px;
+    }
+
+    .product-info h3 {
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+
+    .product-info p {
+      color: #888;
+      font-size: 13px;
+    }
+
+    .price {
+      margin-top: 12px;
+      color: #fff !important;
+      font-weight: bold;
+    }
+
+    /* BRAND STATEMENT */
+    .statement {
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: #fff;
+      color: #050505;
+    }
+
+    .statement-content {
+      max-width: 900px;
+    }
+
+    .statement h2 {
+      font-size: clamp(40px, 7vw, 85px);
+      line-height: 0.95;
+      letter-spacing: -4px;
+      margin-bottom: 30px;
+    }
+
+    .statement p {
+      color: #555;
+      max-width: 600px;
+      margin: auto;
+      line-height: 1.8;
+    }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      background: #0d0d0d;
+    }
+
+    .cta h2 {
+      font-size: clamp(40px, 7vw, 80px);
+      margin-bottom: 20px;
+      letter-spacing: -3px;
+    }
+
+    .cta p {
+      color: #888;
+      margin-bottom: 35px;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 70px 7% 30px;
+      border-top: 1px solid #222;
+      background: #050505;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 70px;
+    }
+
+    .footer-brand h2 {
+      font-size: 25px;
+      letter-spacing: 3px;
+      margin-bottom: 15px;
+    }
+
+    .footer-brand p {
+      color: #777;
+      max-width: 300px;
+      line-height: 1.6;
+      font-size: 13px;
+    }
+
+    .footer-links h4 {
+      margin-bottom: 18px;
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    .footer-links a {
+      display: block;
+      color: #777;
+      text-decoration: none;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .footer-links a:hover {
+      color: #fff;
+    }
+
+    .copyright {
+      border-top: 1px solid #222;
+      padding-top: 25px;
+      color: #555;
+      font-size: 11px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 800px) {
+
+      nav {
+        padding: 0 5%;
+      }
+
+      .logo {
+        font-size: 19px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      section {
+        padding: 75px 5%;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .categories {
+        grid-template-columns: 1fr;
+      }
+
+      .category {
+        height: 350px;
+      }
+
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .product-image {
+        height: 250px;
+      }
+
+      .product-info {
+        padding: 15px;
+      }
+
+      .section-heading {
+        display: block;
+      }
+
+      .section-heading p {
+        margin-top: 10px;
+      }
+
+      .statement {
+        min-height: 450px;
+      }
+
+      .statement h2 {
+        letter-spacing: -2px;
+      }
+
+      .copyright {
+        display: block;
+      }
+
+      .copyright span {
+        display: block;
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="logo">FRANK SENIOR</div>
+
+    <ul class="nav-links">
+      <li><a href="#home">HOME</a></li>
+      <li><a href="#shop">SHOP</a></li>
+      <li><a href="#categories">COLLECTIONS</a></li>
+      <li><a href="#about">ABOUT</a></li>
+    </ul>
+
+    <div class="cart">🛒</div>
+  </nav>
+
+
+  <!-- HERO -->
+  <header class="hero" id="home">
+    <div class="hero-content">
+
+      <div class="small-title">FRANK SENIOR — EST. 2026</div>
+
+      <h1>BUILT<br>DIFFERENT.</h1>
+
+      <p>
+        Premium streetwear and performance wear designed
+        for those who move with confidence.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#shop" class="btn btn-white">SHOP COLLECTION</a>
+        <a href="#categories" class="btn btn-outline">EXPLORE</a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- COLLECTIONS -->
+  <section id="categories">
+
+    <div class="section-heading">
+      <div>
+        <p>EXPLORE THE BRAND</p>
+        <h2>THE COLLECTIONS</h2>
+      </div>
+    </div>
+
+    <div class="categories">
+
+      <div class="category">
+        <div class="category-content">
+          <h3>T-SHIRTS</h3>
+          <a href="#shop">SHOP NOW →</a>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-content">
+          <h3>HOODIES</h3>
+          <a href="#shop">SHOP NOW →</a>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-content">
+          <h3>GYM WEAR</h3>
+          <a href="#shop">SHOP NOW →</a>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PRODUCTS -->
+  <section id="shop">
+
+    <div class="section-heading">
+      <div>
+        <p>FRANK SENIOR</p>
+        <h2>FEATURED</h2>
+      </div>
+
+      <p>NEW SEASON / 01</p>
+    </div>
+
+    <div class="products">
+
+      <div class="product">
+        <div class="product-image">
+          PRODUCT IMAGE
+        </div>
+
+        <div class="product-info">
+          <h3>FRANK SIGNATURE TEE</h3>
+          <p>Premium Cotton / Black</p>
+          <p class="price">TZS 45,000</p>
+        </div>
+      </div>
+
+
+      <div class="product">
+        <div class="product-image">
+          PRODUCT IMAGE
+        </div>
+
+        <div class="product-info">
+          <h3>FRANK OVERSIZED HOODIE</h3>
+          <p>Heavyweight / Black</p>
+          <p class="price">TZS 85,000</p>
+        </div>
+      </div>
+
+
+      <div class="product">
+        <div class="product-image">
+          PRODUCT IMAGE
+        </div>
+
+        <div class="product-info">
+          <h3>FRANK PERFORMANCE TEE</h3>
+          <p>Active Fit / Black</p>
+          <p class="price">TZS 50,000</p>
+        </div>
+      </div>
+
+
+      <div class="product">
+        <div class="product-image">
+          PRODUCT IMAGE
+        </div>
+
+        <div class="product-info">
+          <h3>FRANK TRAINING SET</h3>
+          <p>Performance Wear / Black</p>
+          <p class="price">TZS 95,000</p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- BRAND STATEMENT -->
+  <section class="statement" id="about">
+
+    <div class="statement-content">
+
+      <h2>WEAR YOUR<br>STANDARD.</h2>
+
+      <p>
+        FRANK SENIOR is built around confidence, discipline and
+        individuality. From everyday streetwear to training essentials,
+        every piece is designed to make a statement without saying too much.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- CALL TO ACTION -->
+  <section class="cta">
+
+    <h2>READY TO STAND OUT?</h2>
+
+    <p>
+      Discover the latest FRANK SENIOR collection.
+    </p>
+
+    <a href="#shop" class="btn btn-white">
+      SHOP FRANK SENIOR
+    </a>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <div class="footer-top">
+
+      <div class="footer-brand">
+        <h2>FRANK SENIOR</h2>
+
+        <p>
+          Premium streetwear and gym wear.
+          Built different. Made for those who move with purpose.
+        </p>
+      </div>
+
+
+      <div class="footer-links">
+
+        <h4>SHOP</h4>
+
+        <a href="#shop">T-Shirts</a>
+        <a href="#shop">Hoodies</a>
+        <a href="#shop">Gym Wear</a>
+
+      </div>
+
+
+      <div class="footer-links">
+
+        <h4>FOLLOW</h4>
+
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">Facebook</a>
+
+      </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+      <div>
+        © 2026 FRANK SENIOR. ALL RIGHTS RESERVED.
+      </div>
+
+      <span>
+        PREMIUM CLOTHING
+      </span>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>
